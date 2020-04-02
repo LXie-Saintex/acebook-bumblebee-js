@@ -2,6 +2,7 @@ var Post = require('../models/post');
 
 var PostsController = {
   Index: function(req, res) {
+    console.log(req.cookies)
     Post.find().sort({createdAt: -1 }).exec(function(err, posts) {
       if (err) { throw err; }
 
