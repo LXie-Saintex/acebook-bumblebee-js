@@ -14,11 +14,18 @@ var PostsController = {
   Create: function(req, res) {
     var post = new Post(req.body);
     post.createdAt = new Date();
+    post.likes = 0;
     post.save(function(err) {
       if (err) { throw err; }
 
       res.status(201).redirect('/posts');
     });
+  },
+
+  Like: function(req, res) {
+    Post.findByIdAndUpdate(req.params.id, {$inc: {likes: 1}}, function (err) {
+    });
+    res.status(201).redirect('/posts');
   }
 };
 
