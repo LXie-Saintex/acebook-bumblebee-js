@@ -11,7 +11,27 @@
 // This function is called when a project is opened or re-opened (e.g. due to
 // the project's config changing)
 
-module.exports = function() {
-  // `on` is used to hook into various events Cypress emits
-  // `config` is the resolved Cypress config
+var mongoose = require('mongoose')
+var Post = require('../../models/post');
+var User = require('../../models/user');
+
+
+
+module.exports = (on) => {
+  on('task', {
+    resetDB() {
+      User.deleteMany({  }, function (err) {
+        if (err) return handleError(err);
+      });
+      Post.deleteMany({  }, function (err) {
+        if (err) return handleError(err);
+      });
+      return null;
+    }
+  })
 }
+
+
+
+
+

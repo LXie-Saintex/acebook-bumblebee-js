@@ -23,10 +23,15 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
 Cypress.Commands.add('signup', (name, email, password) => {
 	cy.visit('/new');
 	cy.get('.signup #new-user').find('[name="username"]').type(name);
 	cy.get('.signup #new-user').find('[name="email"]').type(email);
 	cy.get('.signup #new-user').find('[name="password"]').type(password);
 	cy.contains("Submit").click();
+})
+
+beforeEach(function () {
+	cy.task('resetDB')
 })
