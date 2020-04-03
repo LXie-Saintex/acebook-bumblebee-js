@@ -18,15 +18,16 @@ var HomeController = {
     res.render('home/sign_in');
   },
   SignedIn: function(req, res) {
-      User.find({username: req.body.username}, function(err, user){
-      if(user[0].password === req.body.password) {
-        res.cookie('userid', user[0].id)
-        res.cookie('name', user[0].username)
-        res.redirect('/posts');
-      } else {
-        res.render('home/new', { error: 'We could not find those credentials, please sign up before signing in' });
-      }
-      })
+      User.findOne({username: req.body.username}, function(err, user){
+        if(err){ throw err };
+        if(user && user.password === req.body.password) {
+          res.cookie('userid', user.id)
+          res.cookie('name', user.username)
+          res.redirect('/posts');
+        } else {
+          res.render('home/new', { error: 'We could not find those credentials, please sign up before signing in' });
+        }
+      });
     },
   Search: function(req, res) {
     let pattern = req.body.keywords;
