@@ -2,7 +2,7 @@ var User = require('../models/user');
 
 var HomeController = {
   Index: function(req, res) {
-    res.render('home/index', { title: 'Acebook' });
+    res.render('home/index');
   },
   New: function(req, res) {
   	res.render('home/new');
@@ -27,7 +27,14 @@ var HomeController = {
         res.render('home/new', { error: 'We could not find those credentials, please sign up before signing in' });
       }
       })
-    }
+    },
+  Search: function(req, res) {
+    let pattern = req.body.keywords;
+    User.find({username: new RegExp(pattern)}, function(err, foundUsers){
+      if (err) { throw err }
+      res.status(201).render('home/index', { foundUsers : foundUsers });
+    });
   }
+}
 
 module.exports = HomeController;

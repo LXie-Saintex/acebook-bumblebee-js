@@ -4,7 +4,6 @@ var PostsController = {
   Index: function(req, res) {
     Post.find().sort({createdAt: -1 }).exec(function(err, posts) {
       if (err) { throw err; }
-
       res.render('posts/index', { posts: posts });
     });
   },
@@ -17,7 +16,6 @@ var PostsController = {
     post.likes = 0;
     post.save(function(err) {
       if (err) { throw err; }
-
       res.status(201).redirect('/posts');
     });
   },
