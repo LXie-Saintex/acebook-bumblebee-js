@@ -18,17 +18,12 @@ var HomeController = {
     res.render('home/sign_in');
   },
   SignedIn: function(req, res) {
-    var currentUser;
       User.find({username: req.body.username}, function(err, user){
-      currentUser = user
-      console.log(currentUser)
-      if(currentUser[0].password === req.body.password) {
-        console.log(user)
-        res.cookie('userid', currentUser[0].id)
-        res.cookie('name', currentUser[0].username)
+      if(user[0].password === req.body.password) {
+        res.cookie('userid', user[0].id)
+        res.cookie('name', user[0].username)
         res.redirect('/posts');
       } else {
-        console.log('Invalid user');
         res.render('home/new', { error: 'We could not find those credentials, please sign up before signing in' });
       }
       })
