@@ -32,6 +32,23 @@ Cypress.Commands.add('signup', (name, email, password) => {
 	cy.contains("Submit").click();
 })
 
+Cypress.Commands.add('signin', (username, password) => {
+	cy.visit('/sign-in');
+	cy.get('[name="username"]').type(username);
+	cy.get('[name="password"]').type(password);
+	cy.contains("submit").click();
+});
+
 beforeEach(function () {
 	cy.task('resetDB')
 })
+// beforeEach(function(){
+// 					cy.signup("Albatross", "123@gmail.com", "newpassword");
+// 					cy.signin("Albatross", "newpassword");
+// 					window.console.log('Enter the beforeEach function')
+// 					// Preserve the cookies for all tests in this suite
+// 					Cypress.Cookies.preserveOnce('name')
+// 					cy.getCookies().then((cookies) => {
+// 							window.console.log(cookies)
+// 					})
+// 			})

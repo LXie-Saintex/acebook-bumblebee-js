@@ -2,6 +2,7 @@ var User = require('../models/user');
 
 var HomeController = {
   Index: function(req, res) {
+    console.log(req.cookies);
     res.render('home/index');
   },
   New: function(req, res) {
@@ -35,7 +36,13 @@ var HomeController = {
       if (err) { throw err }
       res.status(201).render('home/index', { foundUsers : foundUsers });
     });
-  }
+  },
+  SignOut: function(req, res) {
+    res.clearCookie('name');
+    res.clearCookie('userid');
+    console.log(res.cookies);
+    res.redirect('/sign-in');
+  },
 }
 
 module.exports = HomeController;

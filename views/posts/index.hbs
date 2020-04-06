@@ -1,4 +1,9 @@
 <h1>Timeline</h1>
+
+<form action="/sign-out" method="post" id="sign-out">
+<input type="submit" value="Sign Out" />
+</form>
+
 <ul class="posts">
   {{#each posts}}
 	  <li>{{breaklines this.message}}
