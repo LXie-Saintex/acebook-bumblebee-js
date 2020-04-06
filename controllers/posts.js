@@ -14,6 +14,7 @@ var PostsController = {
     var post = new Post(req.body);
     post.createdAt = new Date();
     post.likes = 0;
+    post.author = req.cookies.name;
     post.save(function(err) {
       if (err) { throw err; }
       res.status(201).redirect('/posts');
