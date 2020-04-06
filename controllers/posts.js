@@ -1,5 +1,6 @@
 var Post = require('../models/post');
 var Comment = require('../models/comment');
+var User = require('../models/user');
 
 var PostsController = {
   Index: function(req, res) {
@@ -39,7 +40,16 @@ var PostsController = {
     Post.findByIdAndUpdate(req.params.id, {$push: {comment: comment }}, function (err) {
     });
     res.status(201).redirect('/posts');
-  }
+  },
+
+  Search: function(req, res) {
+    console.log('Hello');
+    let pattern = req.body.keywords;
+    User.find({username: new RegExp(pattern)}, function(err, foundUsers){
+      if (err) { throw err }
+      res.status(201).render('posts/search', { foundUsers : foundUsers });
+    });
+  },
 };
 
 module.exports = PostsController;
