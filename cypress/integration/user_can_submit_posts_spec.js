@@ -1,6 +1,7 @@
 describe('Timeline', function() {
   it('can submit posts and view them', function() {
-    cy.visit('/posts');
+    cy.signup("Albatross", "123@gmail.com", "12345");
+    cy.signin('Albatross', '12345');
     cy.contains('New post').click();
 
     cy.get('#new-post-form').find('[type="text"]').type('Hello, world!');
@@ -10,7 +11,8 @@ describe('Timeline', function() {
   });
 
   it('can add dates to posts', function() {
-    cy.visit('/posts');
+    cy.signup("Albatross", "123@gmail.com", "12345");
+    cy.signin('Albatross', '12345');
     cy.contains('New post').click();
 
     cy.get('#new-post-form').find('[type="text"]').type('new, message');

@@ -8,11 +8,17 @@ var HomeController = {
   	res.render('home/new');
   },
   Create: function(req, res) {
-  	var user = new User(req.body);
-  	user.save(function(err, user) {
-  		if (err) { throw err; }
-  		res.status(201).render('home/sign_in');
-  	})
+    User.findOne({ email: req.body.email }, function(err, user){
+      if(err) { throw err };
+      if(user){ res.render('home/new', {errorMessage: "User exists, please sign in"}) }
+      else {
+        var user = User(req.body);
+        user.save(function(err, user) {
+          if (err) { throw err; }
+          res.status(201).render('home/sign_in');
+        });
+      };
+    });
   },
   SignIn: function(req, res) {
     res.render('home/sign_in');
@@ -23,7 +29,7 @@ var HomeController = {
         if(user && user.password === req.body.password) {
           res.cookie('userid', user.id)
           res.cookie('name', user.username)
-          res.redirect('/posts');
+          res.redirect('/posts/');
         } else {
           res.render('home/new', { error: 'We could not find those credentials, please sign up before signing in' });
         }

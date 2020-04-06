@@ -11,7 +11,12 @@
 // This function is called when a project is opened or re-opened (e.g. due to
 // the project's config changing)
 
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/acebook_test', {
+   useNewUrlParser: true,
+   useUnifiedTopology: true
+})
+
 var Post = require('../../models/post');
 var User = require('../../models/user');
 
@@ -20,10 +25,10 @@ var User = require('../../models/user');
 module.exports = (on) => {
   on('task', {
     resetDB() {
-      User.deleteMany({  }, function (err) {
+      User.deleteMany({}, function (err, res) {
         if (err) return handleError(err);
       });
-      Post.deleteMany({  }, function (err) {
+      Post.deleteMany({}, function (err) {
         if (err) return handleError(err);
       });
       return null;

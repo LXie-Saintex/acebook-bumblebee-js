@@ -1,6 +1,6 @@
 describe("Sign up", function(){
 	it('allows new user to sign up', function(){
 		cy.signup("Albatross", "123@gmail.com", "newpassword");
-		cy.get('body').contains("Sign in");
+		cy.contains("Sign in");
 	});
 });
