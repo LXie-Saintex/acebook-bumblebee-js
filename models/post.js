@@ -3,7 +3,8 @@ var mongoose = require('mongoose');
 var PostSchema = new mongoose.Schema({
   message: String,
   createdAt: Date,
-  likes: Number
+  likes: Number,
+  comment: Array
 });
 
 var Post = mongoose.model('Post', PostSchema);
