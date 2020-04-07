@@ -1,0 +1,9 @@
+<ul class="navbar">
+{{#if signedIn}}
+	<li class="navbar-item"><a href="/posts" class="nav-link">Posts</a></li>
+{{else}}
+		<li class="navbar-item"><a href="/" class="nav-link">Home</a></li>
+		<li class="navbar-item"><a href="/sign-in" class="nav-link">Sign In</a></li>
+		<li class="navbar-item"><a href="/new" class="nav-link">Sign Up</a></li>
+{{/if}}
+</ul>

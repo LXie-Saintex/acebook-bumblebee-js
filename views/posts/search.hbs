@@ -1,12 +1,14 @@
-<h1>Results</h1>
-
-{{#if foundUsers}}
-	<ul id="search-results">
-		{{#each foundUsers}}
-			<li>
-				<p>User: {{this.username}} </p>
-				<p>Joined at: {{this.createdAt}}</p>
-			</li>
-		{{/each}}
-	</ul>
-{{/if}}
+{{> navbar signedIn = true}}
+<div class="wrapper">
+	<h1>Results</h1>
+	{{#if foundUsers}}
+		<ul id="search-results">
+			{{#each foundUsers}}
+				<li>
+					<p>User: {{this.username}} </p>
+					<p>Joined at: {{this.createdAt}}</p>
+				</li>
+			{{/each}}
+		</ul>
+	{{/if}}
+</div>

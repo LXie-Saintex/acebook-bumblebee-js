@@ -1,5 +1,8 @@
-<form id="new-post-form" action="/posts" method="post">
-  <label for="message">Message: </label>
-  <textarea id="message" type="text" name="message" value=""></textarea>
-  <input type="submit" value="Submit">
-</form>
+{{> navbar}}
+<div class="wrapper">
+	<form id="new-post-form" action="/posts" method="post">
+	  <label for="message">Message: </label>
+	  <textarea id="message" type="text" name="message" value=""></textarea>
+	  <input type="submit" value="Submit">
+	</form>
+</div>
