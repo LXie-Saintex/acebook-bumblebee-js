@@ -18,6 +18,7 @@
     	  <li class="post">
           <p>{{this.author}} posted at {{formatDate this.createdAt}}: <p>
           <p class='message'>{{breaklines this.message}}</p>
+          <p>{{this.currentUser}}</p>
           <p>liked by: {{this.likes}}</p>
           <div id='comments'>
             <p>Comments: </p>
@@ -28,9 +29,13 @@
             </ul>
           <div>
           <div class="action">
-            <form id="like-form" action="/posts/like/{{this.id}}" method="post">
-              <input type="submit" value="Like">
-            </form>
+          {{#ifLiked this.likedBy ../currentUser}}
+          <span></span>
+          {{else}}
+          <form class="like-form" action="/posts/like/{{this.id}}" method="post">
+            <input type="submit" value="Like">
+          </form>
+          {{/ifLiked}}
             <form id="comment-form" action="/posts/comment/{{this.id}}" method="post">
               <input type="text" placeholder="Leave a comment" name="comment">
               <input type="submit" value="Comment">
@@ -40,4 +45,5 @@
       {{/each}}
     </ul>
   </div>
+
 </div>

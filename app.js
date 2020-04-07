@@ -24,6 +24,14 @@ hbs.registerHelper("formatDate", function(date){
 var newDate = new Date(date)
 return newDate.toDateString()
 })
+hbs.registerHelper('ifLiked', function(likers, currentUser, options) {
+  console.log(likers);
+  console.log(currentUser);
+  if(likers.includes(currentUser)) {
+    return options.fn(this);
+  }
+  else { return options.inverse(this);  }
+});
 
 app.use(logger('dev'));
 app.use(express.json());

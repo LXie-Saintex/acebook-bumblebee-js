@@ -7,7 +7,8 @@ var PostsController = {
     if(!req.cookies.name){ res.redirect('/sign-in'); }
     Post.find().sort({createdAt: -1 }).exec(function(err, posts) {
       if (err) { throw err; }
-      res.render('posts/index', { posts: posts });
+      var currentUser = req.cookies.name;
+      res.render('posts/index', { posts: posts, currentUser: currentUser});
     });
   },
   New: function(req, res) {
@@ -25,7 +26,7 @@ var PostsController = {
   },
 
   Like: function(req, res) {
-    Post.findByIdAndUpdate(req.params.id, {$inc: {likes: 1}}, function (err) {
+    Post.findByIdAndUpdate(req.params.id, {$inc: {likes: 1}, $push: {likedBy: req.cookies.name}}, function (err) {
     });
     res.status(201).redirect('/posts');
   },
