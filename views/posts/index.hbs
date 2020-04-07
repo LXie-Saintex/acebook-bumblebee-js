@@ -13,12 +13,12 @@
   {{#each posts}}
 	  <li>{{breaklines this.message}}
       <p>author: {{this.author}}</p>
-      <form id="like-form" action="/posts/like/{{this.id}}" method="post">
+      <form class="like-form" action="/posts/like/{{this.id}}" method="post">
         <input type="submit" value="Like">
       </form>
     <p>Likes: {{this.likes}}</p>
     </br> {{formatDate this.createdAt}}
-    <form id="comment-form" action="/posts/comment/{{this.id}}" method="post">
+    <form class="comment-form" action="/posts/comment/{{this.id}}" method="post">
       <input type="text" placeholder="Enter your comment" name="comment">
       <input type="submit" value="Comment">
     </form>
