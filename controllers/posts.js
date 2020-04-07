@@ -25,7 +25,7 @@ var PostsController = {
   },
 
   Like: function(req, res) {
-    Post.findByIdAndUpdate(req.params.id, {$inc: {likes: 1}}, function (err) {
+    Post.findByIdAndUpdate(req.params.id, {$inc: {likes: 1}, $push: {likedBy: req.cookies.name}}, function (err) {
     });
     res.status(201).redirect('/posts');
   },

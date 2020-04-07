@@ -4,8 +4,9 @@ var PostSchema = new mongoose.Schema({
   message: String,
   createdAt: Date,
   likes: Number,
+  likedBy: Array,
   comment: Array,
-  author: String, 
+  author: String,
 });
 
 var Post = mongoose.model('Post', PostSchema);

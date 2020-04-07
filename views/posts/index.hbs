@@ -11,8 +11,7 @@
 
 <ul class="posts">
   {{#each posts}}
-	  <li>{{breaklines this.message}}
-      <p>author: {{this.author}}</p>
+	  <li>{{breaklines this.message}}    
       <form id="like-form" action="/posts/like/{{this.id}}" method="post">
         <input type="submit" value="Like">
       </form>
