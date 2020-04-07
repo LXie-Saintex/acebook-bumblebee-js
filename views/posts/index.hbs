@@ -36,7 +36,7 @@
             <input type="submit" value="Like">
           </form>
           {{/ifLiked}}
-            <form id="comment-form" action="/posts/comment/{{this.id}}" method="post">
+            <form class="comment-form" action="/posts/comment/{{this.id}}" method="post">
               <input type="text" placeholder="Leave a comment" name="comment">
               <input type="submit" value="Comment">
             </form>
