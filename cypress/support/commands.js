@@ -40,8 +40,12 @@ Cypress.Commands.add('signin', (username, password) => {
 });
 
 beforeEach(function () {
-	cy.task('resetDB')
+	cy.task('resetDB');
 })
+
+afterEach(function() {
+    cy.task('resetDB'); // runs after each test in the block
+  })
 // beforeEach(function(){
 // 					cy.signup("Albatross", "123@gmail.com", "newpassword");
 // 					cy.signin("Albatross", "newpassword");
