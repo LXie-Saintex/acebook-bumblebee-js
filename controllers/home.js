@@ -29,13 +29,7 @@ var HomeController = {
         }
       });
     },
-  Search: function(req, res) {
-    let pattern = req.body.keywords;
-    User.find({username: new RegExp(pattern)}, function(err, foundUsers){
-      if (err) { throw err }
-      res.status(201).render('home/index', { foundUsers : foundUsers });
-    });
-  },
+
   SignOut: function(req, res) {
     res.clearCookie('name');
     res.clearCookie('userid');

@@ -8,6 +8,5 @@ router.get('/new', HomeController.New);
 router.post('/new', HomeController.Create);
 router.get('/sign-in', HomeController.SignIn);
 router.post('/sign-in', HomeController.SignedIn);
-router.post('/search', HomeController.Search);
 router.post('/sign-out', HomeController.SignOut);
 module.exports = router;
