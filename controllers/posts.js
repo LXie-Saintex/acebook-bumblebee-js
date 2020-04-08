@@ -15,12 +15,11 @@ var PostsController = {
     res.render('posts/new', {});
   },
   Create: function(req, res) {
-    console.log(req.file.path)
     var post = new Post(req.body);
     post.createdAt = new Date();
     post.likes = 0;
     post.author = req.cookies.name;
-    post.imagePath = req.file.path;
+    if(req.file !== undefined){post.imagePath = req.file.path;}
     post.save(function(err) {
       if (err) { throw err; }
       res.status(201).redirect('/posts');
