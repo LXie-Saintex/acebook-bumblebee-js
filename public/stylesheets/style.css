@@ -191,6 +191,12 @@ ul h4 {
 	flex-wrap: nowrap;
 	justify-content: space-between;
 }
+.like-form input[type=submit]{
+	margin-left: 5px;
+	padding: 5px;
+	font-size: 1.5em;
+	border: none;
+}
 
 #comments {
 	padding: 0;
