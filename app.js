@@ -23,8 +23,8 @@ hbs.registerHelper('breaklines', function(text) {
 });
 
 hbs.registerHelper("formatDate", function(date){
-var newDate = new Date(date)
-return newDate.toDateString()
+var newDate = new Date(date);
+return newDate.toString();
 })
 
 hbs.registerHelper("extractPath", function(path){
