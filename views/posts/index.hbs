@@ -18,7 +18,9 @@
     	  <li class="post">
           <p>{{this.author}} posted at {{formatDate this.createdAt}}: <p>
           <p class='message'>{{breaklines this.message}}</p>
-          <p>{{this.currentUser}}</p>
+          {{#if this.imagePath}}
+          <img src="../{{extractPath this.imagePath}}">
+          {{/if}}
           <p>liked by: {{this.likes}}</p>
           <div id='comments'>
             <p>Comments: </p>

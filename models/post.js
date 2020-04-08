@@ -7,6 +7,7 @@ var PostSchema = new mongoose.Schema({
   likedBy: Array,
   comment: Array,
   author: String,
+  imagePath: String,
 });
 
 var Post = mongoose.model('Post', PostSchema);

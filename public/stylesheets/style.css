@@ -27,7 +27,7 @@ body {
 	font-size: 11.5pt;
 	line-height: 2em;
 	color: #353B3A;
-	background: #D5ECE7 url(images/bg.png);
+	/* background: #D5ECE7 url(images/bg.png); */
 	letter-spacing: 0.025em;
 }
 
@@ -182,7 +182,7 @@ ul h4 {
 }
 
 .post .message {
-	color: black; 
+	color: black;
 	font-size: 1.2em;
 	padding: 10px;
 }

@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const hbs = require('hbs');
+const multer = require('multer');
+const upload = multer({dest: __dirname + '/public/images/uploads'});
 
 var homeRouter = require('./routes/home');
 var postsRouter = require('./routes/posts');
@@ -24,9 +26,13 @@ hbs.registerHelper("formatDate", function(date){
 var newDate = new Date(date)
 return newDate.toDateString()
 })
+
+hbs.registerHelper("extractPath", function(path){
+var newPath = path.match(/(?<=public).*$/).join()
+return newPath;
+})
+
 hbs.registerHelper('ifLiked', function(likers, currentUser, options) {
-  console.log(likers);
-  console.log(currentUser);
   if(likers.includes(currentUser)) {
     return options.fn(this);
   }

@@ -1,8 +1,9 @@
 {{> navbar}}
 <div class="wrapper">
-	<form id="new-post-form" action="/posts" method="post">
+	<form id="new-post-form" action="/posts" method="post" enctype="multipart/form-data">
 	  <label for="message">Message: </label>
 	  <textarea id="message" type="text" name="message" value=""></textarea>
+		<input type="file" accept="image/*" name="photo" >
 	  <input type="submit" value="Submit">
 	</form>
 </div>
