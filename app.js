@@ -24,7 +24,7 @@ hbs.registerHelper('breaklines', function(text) {
 
 hbs.registerHelper("formatDate", function(date){
 var newDate = new Date(date);
-return newDate.toLocaleString('en-GB').getTimeZoneOffset();
+return newDate.toLocaleString('en-GB').getTimezoneOffset();
 })
 
 hbs.registerHelper("extractPath", function(path){
