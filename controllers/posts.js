@@ -45,9 +45,8 @@ var PostsController = {
   },
 
   Search: function(req, res) {
-    console.log('Hello');
     let pattern = req.body.keywords;
-    User.find({username: new RegExp(pattern)}, function(err, foundUsers){
+    User.find({username: new RegExp(pattern, 'i')}, function(err, foundUsers){
       if (err) { throw err }
       res.status(201).render('posts/search', { foundUsers : foundUsers });
     });

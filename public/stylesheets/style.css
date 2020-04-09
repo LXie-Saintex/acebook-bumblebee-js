@@ -235,6 +235,18 @@ ul h4 {
 	border: solid 1px #C5917E;
 }
 
+#search-results {
+	list-style-type: none;
+	margin-top: 10px;
+	border-left: 2px solid #c7cfcf;
+	padding: 5px;
+	background-color: white;
+}
+
+#search-results p {
+	margin-bottom: 0;
+}
+
 .wrapper {
 	margin: 35px auto 0 auto;
 	width: 980px;

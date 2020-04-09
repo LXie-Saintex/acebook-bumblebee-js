@@ -8,7 +8,7 @@ var HomeController = {
   	res.render('home/new');
   },
   Create: function(req, res) {
-    User.findOne({ email: req.body.email }, function(err, user){
+    User.findOne({ username: req.body.username }, function(err, user){
       if(err) { throw err };
       if(user){ res.render('home/new', {errorMessage: "User exists, please sign in"}) }
       else {
